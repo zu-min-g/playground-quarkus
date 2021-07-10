@@ -1,0 +1,54 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "install extension",
+            "type": "shell",
+            "command": "mvn install -am -pl extension/deployment",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "start main",
+            "type": "shell",
+            "command": "mvn quarkus:dev -pl main -Ddebug=5006",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom",
+                    "pattern": {
+                        "regexp": "$^"
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "$^",
+                        "endsPattern": "^.*Listening for transport dt_socket at address.*$"
+                    },
+                }
+            ],
+        },
+        {
+            "label": "start classic",
+            "type": "shell",
+            "command": "mvn quarkus:dev -pl classic -Ddebug=5007",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom",
+                    "pattern": {
+                        "regexp": "$^"
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "$^",
+                        "endsPattern": "^.*Listening for transport dt_socket at address.*$"
+                    },
+                }
+            ],
+        },
+    ]
+}
