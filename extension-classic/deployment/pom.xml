@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.zu_min.playground.quarkus</groupId>
-    <artifactId>extension-parent</artifactId>
+    <artifactId>extension-classic-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>extension-deployment</artifactId>
-  <name>Extension - Deployment</name>
+  <artifactId>extension-classic-deployment</artifactId>
+  <name>Extension Classic - Deployment</name>
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -16,7 +16,7 @@
     </dependency>
     <dependency>
       <groupId>com.zu_min.playground.quarkus</groupId>
-      <artifactId>extension</artifactId>
+      <artifactId>extension-classic</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -26,11 +26,11 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-hibernate-reactive-panache-deployment</artifactId>
+      <artifactId>quarkus-hibernate-orm-panache-deployment</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive-deployment</artifactId>
+      <artifactId>quarkus-resteasy-deployment</artifactId>
     </dependency>
   </dependencies>
   <build>

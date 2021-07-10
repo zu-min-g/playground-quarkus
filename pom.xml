@@ -11,6 +11,7 @@
     <module>classic</module>
     <module>main</module>
     <module>extension</module>
+    <module>extension-classic</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>

@@ -53,7 +53,7 @@
     </dependency>
     <dependency>
       <groupId>com.zu_min.playground.quarkus</groupId>
-      <artifactId>extension</artifactId>
+      <artifactId>extension-classic</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

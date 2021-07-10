@@ -6,14 +6,14 @@
         {
             "label": "install extension",
             "type": "shell",
-            "command": "mvn install -am -pl extension/deployment",
+            "command": "mvn clean install -am -pl extension/deployment,extension-classic/deployment",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "start main",
             "type": "shell",
-            "command": "mvn quarkus:dev -pl main -Ddebug=5006",
+            "command": "mvn clean quarkus:dev -pl main -Ddebug=5006",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
@@ -33,7 +33,7 @@
         {
             "label": "start classic",
             "type": "shell",
-            "command": "mvn quarkus:dev -pl classic -Ddebug=5007",
+            "command": "mvn clean quarkus:dev -pl classic -Ddebug=5007",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
