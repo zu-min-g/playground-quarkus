@@ -5,7 +5,7 @@ import io.quarkus.deployment.builditem.FeatureBuildItem;
 
 class ExtensionProcessor {
 
-    private static final String FEATURE = "extension";
+    private static final String FEATURE = "my-extension";
 
     @BuildStep
     FeatureBuildItem feature() {
