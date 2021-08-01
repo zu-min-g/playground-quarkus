@@ -8,10 +8,11 @@
   <packaging>pom</packaging>
   <name>quarkus-playground</name>
   <modules>
+    <module>bom/application</module>
     <module>classic</module>
     <module>main</module>
-    <module>extension</module>
-    <module>extension-classic</module>
+    <module>extensions</module>
+    <module>integration-tests</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
