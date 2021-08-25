@@ -6,7 +6,7 @@
         {
             "label": "install extension",
             "type": "shell",
-            "command": "mvn clean install -am -pl extensions/extension/deployment,extensions/extension-classic/deployment",
+            "command": "mvn clean install -am -pl extensions/extension/deployment,extensions/extension-classic/deployment,bom/application",
             "group": "build",
             "problemMatcher": []
         },
