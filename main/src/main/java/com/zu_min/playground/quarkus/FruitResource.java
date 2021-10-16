@@ -11,6 +11,9 @@ import org.jboss.resteasy.reactive.RestQuery;
 
 import io.smallrye.mutiny.Uni;
 
+/**
+ * Panache の例。
+ */
 @Path("fruit")
 public class FruitResource {
     @Inject

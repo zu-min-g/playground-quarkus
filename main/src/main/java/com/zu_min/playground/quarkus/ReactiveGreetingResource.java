@@ -8,6 +8,9 @@ import javax.ws.rs.core.MediaType;
 
 import com.zu_min.playground.quarkus.extension.runtime.MyService;
 
+/**
+ * サンプル REST API。
+ */
 @Path("/hello")
 public class ReactiveGreetingResource {
 

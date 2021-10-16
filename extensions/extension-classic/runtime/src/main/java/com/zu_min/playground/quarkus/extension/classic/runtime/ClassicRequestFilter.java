@@ -10,6 +10,9 @@ import javax.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
 import org.jboss.logging.MDC;
 
+/**
+ * リクエストフィルター。
+ */
 @Provider
 public class ClassicRequestFilter  implements ContainerRequestFilter {
     private static final Logger log = Logger.getLogger(ClassicRequestFilter.class);

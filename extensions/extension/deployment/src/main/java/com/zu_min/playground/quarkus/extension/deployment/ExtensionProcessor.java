@@ -28,7 +28,8 @@ class ExtensionProcessor {
 
     @BuildStep
     void filter(BuildProducer<CustomContainerRequestFilterBuildItem> filters) {
-        filters.produce(new CustomContainerRequestFilterBuildItem(ReactiveRequestFilter.class.getName()));
+        filters.produce(
+            new CustomContainerRequestFilterBuildItem(ReactiveRequestFilter.class.getName()));
     }
 
     @BuildStep

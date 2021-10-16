@@ -5,6 +5,9 @@ import javax.ws.rs.container.ContainerRequestContext;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.reactive.server.ServerRequestFilter;
 
+/**
+ * リクエストフィルター。
+ */
 public class ReactiveRequestFilter {
     private static final Logger log = Logger.getLogger(ReactiveRequestFilter.class);
     

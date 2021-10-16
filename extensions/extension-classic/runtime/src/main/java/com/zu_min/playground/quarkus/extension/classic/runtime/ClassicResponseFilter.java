@@ -9,11 +9,17 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.MDC;
 
+/**
+ * レスポンスフィルター。
+ */
 @Provider
 public class ClassicResponseFilter implements ContainerResponseFilter {
+
     @Override
-    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
-            throws IOException {
+    public void filter(ContainerRequestContext requestContext,
+        ContainerResponseContext responseContext)
+        throws IOException {
+
         MDC.remove("req.id");
     }
     
