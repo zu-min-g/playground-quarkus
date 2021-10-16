@@ -122,5 +122,14 @@
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
     </profile>
+    <profile>
+      <!-- https://github.com/redhat-developer/vscode-java/issues/1381#issuecomment-846578339 -->
+      <activation>
+        <property><name>m2e.version</name></property>
+      </activation>
+      <properties>
+        <build.output>target-ide</build.output>
+      </properties>
+    </profile>
   </profiles>
 </project>
