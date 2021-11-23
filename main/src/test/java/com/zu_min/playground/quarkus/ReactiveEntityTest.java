@@ -29,7 +29,7 @@ class ReactiveEntityTest {
     @Test
     void testInsertAndCommit() {
         var apple = new Fruit();
-        apple.name = "りんご";
+        apple.setName("りんご");
 
         var subscriber = apple.<Fruit>persist()
 
@@ -40,7 +40,7 @@ class ReactiveEntityTest {
             .invoke(e -> session.clear())
 
             // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.id))
+            .chain(e -> Fruit.<Fruit>findById(e.getId()))
             
             // 購読者を指定して処理を実施
             .subscribe().withSubscriber(UniAssertSubscriber.create());
@@ -54,7 +54,7 @@ class ReactiveEntityTest {
             .getItem();
 
         // 結果の検証
-        assertEquals("りんご", actual.name);
+        assertEquals("りんご", actual.getName());
 
         // DB から再取得して新しいオブジェクト ID になっていることを確認
         assertNotSame(System.identityHashCode(apple), System.identityHashCode(actual));
@@ -67,7 +67,7 @@ class ReactiveEntityTest {
     @TestTransaction
     void testInsertWithTestTransaction() {
         var apple = new Fruit();
-        apple.name = "りんご";
+        apple.setName("りんご");
 
         var subscriber = apple.<Fruit>persist()
 
@@ -78,7 +78,7 @@ class ReactiveEntityTest {
             .invoke(e -> session.clear())
 
             // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.id))
+            .chain(e -> Fruit.<Fruit>findById(e.getId()))
             
             // 購読者を指定して処理を実施
             .subscribe().withSubscriber(UniAssertSubscriber.create());
@@ -92,7 +92,7 @@ class ReactiveEntityTest {
             .getItem();
 
         // 結果の検証
-        assertEquals("りんご", actual.name);
+        assertEquals("りんご", actual.getName());
 
         // DB から再取得して新しいオブジェクト ID になっていることを確認
         assertNotSame(System.identityHashCode(apple), System.identityHashCode(actual));
@@ -106,7 +106,7 @@ class ReactiveEntityTest {
     @TestReactiveTransaction
     void testFailureCaseOfInsertWithTestReactiveTransaction() {
         var apple = new Fruit();
-        apple.name = "りんご";
+        apple.setName("りんご");
 
         var subscriber = apple.<Fruit>persist()
 
@@ -117,7 +117,7 @@ class ReactiveEntityTest {
             .invoke(e -> session.clear())
 
             // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.id))
+            .chain(e -> Fruit.<Fruit>findById(e.getId()))
             
             // 購読者を指定して処理を実施
             .subscribe().withSubscriber(UniAssertSubscriber.create());
@@ -131,7 +131,7 @@ class ReactiveEntityTest {
             .getItem();
 
         // 結果の検証
-        assertEquals("りんご", actual.name);
+        assertEquals("りんご", actual.getName());
 
         // DB から再取得して新しいオブジェクト ID になっていることを確認
         assertNotSame(System.identityHashCode(apple), System.identityHashCode(actual));
@@ -144,7 +144,7 @@ class ReactiveEntityTest {
     @TestReactiveTransaction
     void testInsertWithTestReactiveTransactionAndUniAsserter(UniAsserter asserter) {
         var apple = new Fruit();
-        apple.name = "りんご";
+        apple.setName("りんご");
         
         asserter.assertThat(() -> {
 
@@ -157,12 +157,12 @@ class ReactiveEntityTest {
                 .invoke(e -> session.clear())
 
                 // 登録した情報を取得 （キャッシュを消したので DB から取得）
-                .chain(e -> Fruit.<Fruit>findById(e.id));
+                .chain(e -> Fruit.<Fruit>findById(e.getId()));
 
         }, actual -> {
 
             // 結果の検証
-            assertEquals("りんご", actual.name);
+            assertEquals("りんご", actual.getName());
 
             // DB から再取得して新しいオブジェクト ID になっていることを確認
             assertNotSame(System.identityHashCode(apple), System.identityHashCode(actual));
