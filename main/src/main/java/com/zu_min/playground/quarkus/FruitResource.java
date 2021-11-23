@@ -12,7 +12,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+import com.zu_min.playground.quarkus.dto.FruitDto;
 import com.zu_min.playground.quarkus.extension.runtime.Fruit;
+import com.zu_min.playground.quarkus.mapper.FruitMapper;
 
 import org.hibernate.reactive.mutiny.Mutiny;
 import org.jboss.resteasy.reactive.RestQuery;
@@ -28,26 +30,35 @@ public class FruitResource {
     @Inject
     Mutiny.Session session;
 
+    @Inject
+    FruitMapper mapper;
+
     @GET
-    public Uni<Fruit> get(@RestQuery Long id) {
-        return Fruit.findById(id);
+    public Uni<FruitDto> get(@RestQuery Long id) {
+        return Fruit.<Fruit>findById(id)
+            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+            .map(e -> mapper.createFrom(e));
     }
 
     @POST
     @ReactiveTransactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public Uni<Fruit> add(@Valid Fruit fruit) {
-        fruit.setId(null);
-        return fruit.<Fruit>persist();
+    public Uni<FruitDto> add(@Valid FruitDto fruit) {
+        var entity = mapper.createFrom(fruit);
+        return entity.<Fruit>persist()
+            .map(e -> mapper.createFrom(e));
     }
 
     @PUT
     @ReactiveTransactional
     @Path("{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Uni<Fruit> update(@PathParam("id") Long id, @Valid Fruit fruit) {
-        fruit.setId(id);
-        return session.merge(fruit).call(() -> session.flush());
+    public Uni<FruitDto> update(@PathParam("id") Long id, @Valid FruitDto dto) {
+        return Fruit.<Fruit>findById(id)
+            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+            .invoke(e -> mapper.copyTo(e, dto))
+            .call(() -> session.flush())
+            .map(e -> mapper.createFrom(e));
     }
 
     @DELETE
@@ -61,8 +72,10 @@ public class FruitResource {
     
     @GET
     @Path("from-em")
-    public Uni<Fruit> getByEntityManager(@RestQuery Long id) {
+    public Uni<FruitDto> getByEntityManager(@RestQuery Long id) {
         return session.createQuery("from Fruit where id = :id", Fruit.class)
-            .setParameter("id", id).getSingleResultOrNull();
+            .setParameter("id", id).getSingleResultOrNull()
+            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+            .map(e -> mapper.createFrom(e));
     }
 }
