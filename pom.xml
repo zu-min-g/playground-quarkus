@@ -12,6 +12,7 @@
     <module>main</module>
     <module>extensions</module>
     <module>integration-tests</module>
+    <module>build-tools</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
@@ -130,9 +131,14 @@
               <artifactId>checkstyle</artifactId>
               <version>8.45.1</version>
             </dependency>
+            <dependency>
+              <groupId>com.zu_min.playground.quarkus</groupId>
+              <artifactId>build-configs</artifactId>
+              <version>${project.version}</version>
+            </dependency>
           </dependencies>
           <configuration>
-            <configLocation>checkstyle.xml</configLocation>
+            <configLocation>app/checkstyle/checkstyle.xml</configLocation>
           </configuration>
           <executions>
             <execution>
