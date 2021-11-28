@@ -29,6 +29,7 @@
     <lombok.version>1.18.22</lombok.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     <hibernate.jpamodelgen.version>5.6.1.Final</hibernate.jpamodelgen.version>
+    <spotless.version>2.17.4</spotless.version>
   </properties>
   <dependencies>
     <dependency>
@@ -155,6 +156,33 @@
               </goals>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>com.diffplug.spotless</groupId>
+          <artifactId>spotless-maven-plugin</artifactId>
+          <version>${spotless.version}</version>
+          <configuration>
+            <java>
+              <eclipse>
+                <file>app/formatter/formatter.xml</file>
+              </eclipse>
+              <removeUnusedImports />
+              <importOrder>
+                <wildcardsLast>false</wildcardsLast>
+                <order>java,javax,io.quarkus,com.zu_min,</order>
+              </importOrder>
+            </java>
+            <pom>
+              <sortPom></sortPom>
+            </pom>
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>com.zu_min.playground.quarkus</groupId>
+              <artifactId>build-configs</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
       </plugins>
     </pluginManagement>
