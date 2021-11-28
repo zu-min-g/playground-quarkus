@@ -6,5 +6,6 @@
         "javax",
         "io.quarkus",
         "com.zu_min"
-    ]
+    ],
+    "files.insertFinalNewline": true
 }
