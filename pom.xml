@@ -190,6 +190,12 @@
           <groupId>org.jacoco</groupId>
           <artifactId>jacoco-maven-plugin</artifactId>
           <version>${jacoco.plugin.version}</version>
+          <configuration>
+            <excludes>
+              <exclude>**/*$$accessor.class</exclude>
+              <exclude>**/*_.class</exclude>
+            </excludes>
+          </configuration>
           <executions>
             <execution>
               <id>default-prepare-agent</id>
@@ -214,12 +220,6 @@
               </configuration>
             </execution>
           </executions>
-          <configuration>
-            <excludes>
-              <exclude>**/*$$accessor.class</exclude>
-              <exclude>**/*_.class</exclude>
-            </excludes>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
