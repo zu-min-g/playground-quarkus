@@ -28,6 +28,7 @@
     <quarkus.platform.version>${quarkus.version}</quarkus.platform.version>
     <lombok.version>1.18.22</lombok.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+    <hibernate.jpamodelgen.version>5.6.1.Final</hibernate.jpamodelgen.version>
   </properties>
   <dependencies>
     <dependency>
@@ -117,6 +118,11 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${org.mapstruct.version}</version>
+              </path>
+              <path>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.jpamodelgen.version}</version>
               </path>
             </annotationProcessorPaths>
           </configuration>
