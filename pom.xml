@@ -9,6 +9,7 @@
   <modules>
     <module>bom/application</module>
     <module>build-tools</module>
+    <module>build-parent</module>
     <!-- extensions の deployment モジュールを先にビルドする必要があるので、 extensions, apps の順にする。 -->
     <module>extensions</module>
     <module>integration-tests</module>
