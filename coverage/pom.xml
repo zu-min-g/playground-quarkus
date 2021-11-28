@@ -8,6 +8,9 @@
   </parent>
   <artifactId>coverage</artifactId>
   <name>Coverage</name>
+  <properties>
+    <maven.install.skip>true</maven.install.skip>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>com.zu_min.playground.quarkus</groupId>
