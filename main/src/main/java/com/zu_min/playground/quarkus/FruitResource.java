@@ -33,6 +33,9 @@ public class FruitResource {
     @Inject
     FruitMapper mapper;
 
+    /**
+     * 指定した id に紐づく情報を返却します。
+     */
     @GET
     public Uni<FruitDto> get(@RestQuery Long id) {
         return Fruit.<Fruit>findById(id)
@@ -40,6 +43,9 @@ public class FruitResource {
             .map(e -> mapper.createFrom(e));
     }
 
+    /**
+     * 追加します。
+     */
     @POST
     @ReactiveTransactional
     @Consumes(MediaType.APPLICATION_JSON)
@@ -49,6 +55,9 @@ public class FruitResource {
             .map(e -> mapper.createFrom(e));
     }
 
+    /**
+     * 更新します。
+     */
     @PUT
     @ReactiveTransactional
     @Path("{id}")
@@ -61,6 +70,9 @@ public class FruitResource {
             .map(e -> mapper.createFrom(e));
     }
 
+    /**
+     * 削除します。
+     */
     @DELETE
     @ReactiveTransactional
     @Path("{id}")
@@ -70,6 +82,9 @@ public class FruitResource {
             .chain(f -> f.delete());
     }
     
+    /**
+     * query を使用して取得します。
+     */
     @GET
     @Path("from-em")
     public Uni<FruitDto> getByEntityManager(@RestQuery Long id) {

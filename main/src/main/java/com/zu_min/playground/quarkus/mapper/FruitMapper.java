@@ -7,6 +7,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+/**
+ * 果物用のマッパー。
+ */
 @Mapper(componentModel = "cdi")
 public interface FruitMapper {
     @Mapping(target = "id", ignore = true)
