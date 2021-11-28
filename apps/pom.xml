@@ -16,4 +16,16 @@
   <properties>
     <maven.install.skip>true</maven.install.skip>
   </properties>
+  <profiles>
+    <profile>
+      <id>coverage</id>
+      <dependencies>
+        <dependency>
+          <groupId>io.quarkus</groupId>
+          <artifactId>quarkus-jacoco</artifactId>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 </project>

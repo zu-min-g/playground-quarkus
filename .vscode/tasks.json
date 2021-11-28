@@ -50,5 +50,17 @@
                 }
             ],
         },
+        {
+            "label": "coverage",
+            "type": "shell",
+            "command": "mvn clean verify -P coverage",
+            "group": "build",
+        },
+        {
+            "label": "aggregate coverage",
+            "type": "shell",
+            "command": "mvn jacoco:report-aggregate",
+            "group": "build",
+        },
     ]
 }
