@@ -4,16 +4,16 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "install extension",
+            "label": "install",
             "type": "shell",
-            "command": "mvn clean install -am -pl extensions/extension/deployment,extensions/extension-classic/deployment,bom/application",
+            "command": "mvn clean install -DskipTests=true",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "start main",
             "type": "shell",
-            "command": "mvn clean quarkus:dev -pl main -Ddebug=5006",
+            "command": "mvn clean quarkus:dev -pl apps/main -Ddebug=5006",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
@@ -33,7 +33,7 @@
         {
             "label": "start classic",
             "type": "shell",
-            "command": "mvn clean quarkus:dev -pl classic -Ddebug=5007",
+            "command": "mvn clean quarkus:dev -pl apps/classic -Ddebug=5007",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [

@@ -8,11 +8,11 @@
   <name>quarkus-playground</name>
   <modules>
     <module>bom/application</module>
-    <module>classic</module>
-    <module>main</module>
+    <module>build-tools</module>
+    <!-- extensions の deployment モジュールを先にビルドする必要があるので、 extensions, apps の順にする。 -->
     <module>extensions</module>
     <module>integration-tests</module>
-    <module>build-tools</module>
+    <module>apps</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
