@@ -1,12 +1,12 @@
 package com.zu_min.playground.quarkus.extension.classic.deployment;
 
-import com.zu_min.playground.quarkus.extension.classic.runtime.ClassicRequestFilter;
-import com.zu_min.playground.quarkus.extension.classic.runtime.ClassicResponseFilter;
-
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.resteasy.common.spi.ResteasyJaxrsProviderBuildItem;
+
+import com.zu_min.playground.quarkus.extension.classic.runtime.ClassicRequestFilter;
+import com.zu_min.playground.quarkus.extension.classic.runtime.ClassicResponseFilter;
 
 class ExtensionClassicProcessor {
 

@@ -12,15 +12,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
+
 import com.zu_min.playground.quarkus.dto.FruitDto;
 import com.zu_min.playground.quarkus.extension.runtime.Fruit;
 import com.zu_min.playground.quarkus.mapper.FruitMapper;
 
+import io.smallrye.mutiny.Uni;
 import org.hibernate.reactive.mutiny.Mutiny;
 import org.jboss.resteasy.reactive.RestQuery;
-
-import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
-import io.smallrye.mutiny.Uni;
 
 /**
  * Panache の例。
@@ -39,8 +39,8 @@ public class FruitResource {
     @GET
     public Uni<FruitDto> get(@RestQuery Long id) {
         return Fruit.<Fruit>findById(id)
-            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
-            .map(e -> mapper.createFrom(e));
+                .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+                .map(e -> mapper.createFrom(e));
     }
 
     /**
@@ -52,7 +52,7 @@ public class FruitResource {
     public Uni<FruitDto> add(@Valid FruitDto fruit) {
         var entity = mapper.createFrom(fruit);
         return entity.<Fruit>persist()
-            .map(e -> mapper.createFrom(e));
+                .map(e -> mapper.createFrom(e));
     }
 
     /**
@@ -64,10 +64,10 @@ public class FruitResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Uni<FruitDto> update(@PathParam("id") Long id, @Valid FruitDto dto) {
         return Fruit.<Fruit>findById(id)
-            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
-            .invoke(e -> mapper.copyTo(e, dto))
-            .call(() -> session.flush())
-            .map(e -> mapper.createFrom(e));
+                .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+                .invoke(e -> mapper.copyTo(e, dto))
+                .call(() -> session.flush())
+                .map(e -> mapper.createFrom(e));
     }
 
     /**
@@ -78,10 +78,10 @@ public class FruitResource {
     @Path("{id}")
     public Uni<Void> delete(@PathParam("id") Long id) {
         return Fruit.findById(id)
-            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
-            .chain(f -> f.delete());
+                .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+                .chain(f -> f.delete());
     }
-    
+
     /**
      * query を使用して取得します。
      */
@@ -89,8 +89,8 @@ public class FruitResource {
     @Path("from-em")
     public Uni<FruitDto> getByEntityManager(@RestQuery Long id) {
         return session.createQuery("from Fruit where id = :id", Fruit.class)
-            .setParameter("id", id).getSingleResultOrNull()
-            .onItem().ifNull().failWith(() -> new WebApplicationException(404))
-            .map(e -> mapper.createFrom(e));
+                .setParameter("id", id).getSingleResultOrNull()
+                .onItem().ifNull().failWith(() -> new WebApplicationException(404))
+                .map(e -> mapper.createFrom(e));
     }
 }

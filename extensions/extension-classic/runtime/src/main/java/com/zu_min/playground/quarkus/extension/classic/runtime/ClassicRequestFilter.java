@@ -14,7 +14,7 @@ import org.jboss.logging.MDC;
  * リクエストフィルター。
  */
 @Provider
-public class ClassicRequestFilter  implements ContainerRequestFilter {
+public class ClassicRequestFilter implements ContainerRequestFilter {
     private static final Logger log = Logger.getLogger(ClassicRequestFilter.class);
 
     @Override
@@ -24,5 +24,5 @@ public class ClassicRequestFilter  implements ContainerRequestFilter {
 
         log.info(requestContext.getUriInfo().getRequestUri().toString());
     }
-    
+
 }

@@ -1,9 +1,5 @@
 package com.zu_min.playground.quarkus.extension.deployment;
 
-import com.zu_min.playground.quarkus.extension.runtime.Fruit;
-import com.zu_min.playground.quarkus.extension.runtime.MyService;
-import com.zu_min.playground.quarkus.extension.runtime.ReactiveRequestFilter;
-
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -11,6 +7,10 @@ import io.quarkus.deployment.builditem.AdditionalIndexedClassesBuildItem;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.hibernate.orm.deployment.AdditionalJpaModelBuildItem;
 import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
+
+import com.zu_min.playground.quarkus.extension.runtime.Fruit;
+import com.zu_min.playground.quarkus.extension.runtime.MyService;
+import com.zu_min.playground.quarkus.extension.runtime.ReactiveRequestFilter;
 
 class ExtensionProcessor {
 
@@ -29,7 +29,7 @@ class ExtensionProcessor {
     @BuildStep
     void filter(BuildProducer<CustomContainerRequestFilterBuildItem> filters) {
         filters.produce(
-            new CustomContainerRequestFilterBuildItem(ReactiveRequestFilter.class.getName()));
+                new CustomContainerRequestFilterBuildItem(ReactiveRequestFilter.class.getName()));
     }
 
     @BuildStep

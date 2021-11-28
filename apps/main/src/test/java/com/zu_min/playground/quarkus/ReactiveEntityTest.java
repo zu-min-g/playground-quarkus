@@ -5,17 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 
 import javax.inject.Inject;
 
-import com.zu_min.playground.quarkus.extension.runtime.Fruit;
-
-import org.hibernate.reactive.mutiny.Mutiny.Session;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
 import io.quarkus.test.TestReactiveTransaction;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.vertx.UniAsserter;
+
+import com.zu_min.playground.quarkus.extension.runtime.Fruit;
+
 import io.smallrye.mutiny.helpers.test.UniAssertSubscriber;
+import org.hibernate.reactive.mutiny.Mutiny.Session;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 class ReactiveEntityTest {
@@ -33,25 +33,25 @@ class ReactiveEntityTest {
 
         var subscriber = apple.<Fruit>persist()
 
-            // DB へ反映
-            .call(e -> session.flush())
+                // DB へ反映
+                .call(e -> session.flush())
 
-            // 1 次キャッシュクリア
-            .invoke(e -> session.clear())
+                // 1 次キャッシュクリア
+                .invoke(e -> session.clear())
 
-            // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.getId()))
-            
-            // 購読者を指定して処理を実施
-            .subscribe().withSubscriber(UniAssertSubscriber.create());
-        
+                // 登録した情報を取得 （キャッシュを消したので DB から取得）
+                .chain(e -> Fruit.<Fruit>findById(e.getId()))
+
+                // 購読者を指定して処理を実施
+                .subscribe().withSubscriber(UniAssertSubscriber.create());
+
         var actual = subscriber
-            // ブロックして結果を待つ
-            .awaitItem()
-            // 完了すること（例外が発生しないこと）
-            .assertCompleted()
-            // 結果を取得
-            .getItem();
+                // ブロックして結果を待つ
+                .awaitItem()
+                // 完了すること（例外が発生しないこと）
+                .assertCompleted()
+                // 結果を取得
+                .getItem();
 
         // 結果の検証
         assertEquals("りんご", actual.getName());
@@ -71,25 +71,25 @@ class ReactiveEntityTest {
 
         var subscriber = apple.<Fruit>persist()
 
-            // DB へ反映
-            .call(e -> session.flush())
+                // DB へ反映
+                .call(e -> session.flush())
 
-            // 1 次キャッシュクリア
-            .invoke(e -> session.clear())
+                // 1 次キャッシュクリア
+                .invoke(e -> session.clear())
 
-            // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.getId()))
-            
-            // 購読者を指定して処理を実施
-            .subscribe().withSubscriber(UniAssertSubscriber.create());
-        
+                // 登録した情報を取得 （キャッシュを消したので DB から取得）
+                .chain(e -> Fruit.<Fruit>findById(e.getId()))
+
+                // 購読者を指定して処理を実施
+                .subscribe().withSubscriber(UniAssertSubscriber.create());
+
         var actual = subscriber
-            // ブロックして結果を待つ
-            .awaitItem()
-            // 完了すること（例外が発生しないこと）
-            .assertCompleted()
-            // 結果を取得
-            .getItem();
+                // ブロックして結果を待つ
+                .awaitItem()
+                // 完了すること（例外が発生しないこと）
+                .assertCompleted()
+                // 結果を取得
+                .getItem();
 
         // 結果の検証
         assertEquals("りんご", actual.getName());
@@ -110,25 +110,25 @@ class ReactiveEntityTest {
 
         var subscriber = apple.<Fruit>persist()
 
-            // DB へ反映
-            .call(e -> session.flush())
+                // DB へ反映
+                .call(e -> session.flush())
 
-            // 1 次キャッシュクリア
-            .invoke(e -> session.clear())
+                // 1 次キャッシュクリア
+                .invoke(e -> session.clear())
 
-            // 登録した情報を取得 （キャッシュを消したので DB から取得）
-            .chain(e -> Fruit.<Fruit>findById(e.getId()))
-            
-            // 購読者を指定して処理を実施
-            .subscribe().withSubscriber(UniAssertSubscriber.create());
-        
+                // 登録した情報を取得 （キャッシュを消したので DB から取得）
+                .chain(e -> Fruit.<Fruit>findById(e.getId()))
+
+                // 購読者を指定して処理を実施
+                .subscribe().withSubscriber(UniAssertSubscriber.create());
+
         var actual = subscriber
-            // ブロックして結果を待つ
-            .awaitItem()
-            // 完了すること（例外が発生しないこと）
-            .assertCompleted()
-            // 結果を取得
-            .getItem();
+                // ブロックして結果を待つ
+                .awaitItem()
+                // 完了すること（例外が発生しないこと）
+                .assertCompleted()
+                // 結果を取得
+                .getItem();
 
         // 結果の検証
         assertEquals("りんご", actual.getName());
@@ -145,19 +145,19 @@ class ReactiveEntityTest {
     void testInsertWithTestReactiveTransactionAndUniAsserter(UniAsserter asserter) {
         var apple = new Fruit();
         apple.setName("りんご");
-        
+
         asserter.assertThat(() -> {
 
             return apple.<Fruit>persist()
 
-                // DB へ反映
-                .call(e -> session.flush())
+                    // DB へ反映
+                    .call(e -> session.flush())
 
-                // 1 次キャッシュクリア
-                .invoke(e -> session.clear())
+                    // 1 次キャッシュクリア
+                    .invoke(e -> session.clear())
 
-                // 登録した情報を取得 （キャッシュを消したので DB から取得）
-                .chain(e -> Fruit.<Fruit>findById(e.getId()));
+                    // 登録した情報を取得 （キャッシュを消したので DB から取得）
+                    .chain(e -> Fruit.<Fruit>findById(e.getId()));
 
         }, actual -> {
 

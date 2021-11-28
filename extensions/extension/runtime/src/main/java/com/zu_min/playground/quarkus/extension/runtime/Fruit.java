@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import io.quarkus.hibernate.reactive.panache.PanacheEntityBase;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

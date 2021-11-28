@@ -16,7 +16,7 @@ public interface FruitMapper {
     void copyTo(@MappingTarget Fruit entity, FruitDto dto);
 
     FruitDto createFrom(Fruit entity);
-    
+
     @Mapping(target = "id", ignore = true)
     Fruit createFrom(FruitDto dto);
 }
