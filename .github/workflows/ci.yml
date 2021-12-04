@@ -27,13 +27,13 @@ jobs:
           cache: "maven"
       - name: Build configs
         shell: bash
-        run: mvn install -am -pl build-tools/configs
+        run: mvn install -am -pl build-tools/configs -Pci
       - name: Coding style check
         shell: bash
-        run: mvn spotless:check checkstyle:check
+        run: mvn spotless:check checkstyle:check -Pci
       - name: Install libraries and extensions
         shell: bash
-        run: mvn install -DskipTests
+        run: mvn install -DskipTests -Pci
       - name: Test
         shell: bash
-        run: mvn test
+        run: mvn test -Pci
