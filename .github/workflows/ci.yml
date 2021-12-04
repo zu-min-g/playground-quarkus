@@ -33,7 +33,7 @@ jobs:
         run: mvn spotless:check checkstyle:check
       - name: Install libraries and extensions
         shell: bash
-        run: mvn install
+        run: mvn install -DskipTests
       - name: Test
         shell: bash
         run: mvn test
