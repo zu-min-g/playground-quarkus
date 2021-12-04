@@ -1,0 +1,39 @@
+name: CI
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - ".dockerignore"
+      - "*.config"
+      - "*.md"
+      - ".github/*.yml"
+      - "middleware/**"
+      - ".vscode/**"
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    name: CI
+    if: github.event.pull_request.merged == true || github.event.action != 'closed'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: "11"
+          cache: "maven"
+      - name: Build configs
+        shell: bash
+        run: mvn install -am -pl build-tools/configs -Pci
+      - name: Coding style check
+        shell: bash
+        run: mvn spotless:check checkstyle:check -Pci
+      - name: Install libraries and extensions
+        shell: bash
+        run: mvn install -DskipTests -Pci
+      - name: Test
+        shell: bash
+        run: mvn test -Pci
