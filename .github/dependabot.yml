@@ -12,3 +12,7 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
+    ignore:
+      - dependency-name: "io.quarkus:quarkus-maven-plugin"
+      - dependency-name: "io.quarkus:quarkus-universe-bom"
+    rebase-strategy: disabled
