@@ -109,9 +109,9 @@
             <parameters>${maven.compiler.parameters}</parameters>
             <annotationProcessorPaths>
               <path>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-extension-processor</artifactId>
-                <version>${quarkus.version}</version>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-jpamodelgen</artifactId>
+                <version>${hibernate.jpamodelgen.version}</version>
               </path>
               <path>
                 <groupId>org.projectlombok</groupId>
@@ -124,11 +124,15 @@
                 <version>${org.mapstruct.version}</version>
               </path>
               <path>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-jpamodelgen</artifactId>
-                <version>${hibernate.jpamodelgen.version}</version>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-extension-processor</artifactId>
+                <version>${quarkus.version}</version>
               </path>
             </annotationProcessorPaths>
+            <compilerArgs>
+              <arg>-Amapstruct.defaultComponentModel=cdi</arg>
+              <arg>-Amapstruct.defaultInjectionStrategy=constructor</arg>
+            </compilerArgs>
           </configuration>
         </plugin>
         <plugin>

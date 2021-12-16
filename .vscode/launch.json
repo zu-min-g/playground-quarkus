@@ -14,6 +14,7 @@
             "hostName": "localhost",
             "port": "5006",
             "preLaunchTask": "start main",
+            "projectName": "main",
         },
         {
             "type": "java",
@@ -22,6 +23,7 @@
             "hostName": "localhost",
             "port": "5007",
             "preLaunchTask": "start classic",
+            "projectName": "classic",
         },
     ]
 }

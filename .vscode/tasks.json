@@ -6,14 +6,14 @@
         {
             "label": "install",
             "type": "shell",
-            "command": "mvn clean install -DskipTests=true",
+            "command": "mvn clean install -DskipTests=true -DskipApps=true",
             "group": "build",
             "problemMatcher": []
         },
         {
             "label": "start main",
             "type": "shell",
-            "command": "mvn clean quarkus:dev -pl apps/main -Ddebug=5006",
+            "command": "mvn clean compile quarkus:dev -pl apps/main -Ddebug=5006",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
@@ -33,7 +33,7 @@
         {
             "label": "start classic",
             "type": "shell",
-            "command": "mvn clean quarkus:dev -pl apps/classic -Ddebug=5007",
+            "command": "mvn clean compile quarkus:dev -pl apps/classic -Ddebug=5007",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
