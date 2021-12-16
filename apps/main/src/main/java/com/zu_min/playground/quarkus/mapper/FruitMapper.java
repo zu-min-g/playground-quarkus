@@ -10,7 +10,7 @@ import org.mapstruct.MappingTarget;
 /**
  * 果物用のマッパー。
  */
-@Mapper(componentModel = "cdi")
+@Mapper
 public interface FruitMapper {
     @Mapping(target = "id", ignore = true)
     void copyTo(@MappingTarget Fruit entity, FruitDto dto);

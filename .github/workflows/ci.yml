@@ -33,7 +33,7 @@ jobs:
         run: mvn spotless:check checkstyle:check -Pci
       - name: Install libraries and extensions
         shell: bash
-        run: mvn install -DskipTests -Pci
+        run: mvn install -DskipTests=true -DskipApps=trues -Pci
       - name: Test
         shell: bash
         run: mvn test -Pci

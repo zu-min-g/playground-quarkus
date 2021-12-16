@@ -13,5 +13,9 @@
   <modules></modules>
   <properties>
     <maven.install.skip>true</maven.install.skip>
+    <maven.main.skip>${skipApps}</maven.main.skip>
+    <maven.test.skip>${skipApps}</maven.test.skip>
+    <quarkus.generate-code.skip>${skipApps}</quarkus.generate-code.skip>
+    <quarkus.build.skip>${skipApps}</quarkus.build.skip>
   </properties>
 </project>
