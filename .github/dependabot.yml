@@ -14,5 +14,5 @@ updates:
       - "dependencies"
     ignore:
       - dependency-name: "io.quarkus:quarkus-maven-plugin"
-      - dependency-name: "io.quarkus:quarkus-universe-bom"
+      - dependency-name: "io.quarkus:quarkus-bom"
     rebase-strategy: disabled
