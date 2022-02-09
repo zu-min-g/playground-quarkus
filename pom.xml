@@ -31,7 +31,7 @@
     <lombok.version>1.18.22</lombok.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     <hibernate.jpamodelgen.version>5.6.1.Final</hibernate.jpamodelgen.version>
-    <spotless.version>2.19.2</spotless.version>
+    <spotless.version>2.20.2</spotless.version>
     <jacoco.plugin.version>0.8.7</jacoco.plugin.version>
   </properties>
   <dependencyManagement>
