@@ -28,7 +28,7 @@
     <surefire-plugin.version>3.0.0-M6</surefire-plugin.version>
     <quarkus.platform.artifact-id>quarkus-universe-bom</quarkus.platform.artifact-id>
     <quarkus.platform.version>${quarkus.version}</quarkus.platform.version>
-    <lombok.version>1.18.22</lombok.version>
+    <lombok.version>1.18.24</lombok.version>
     <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     <hibernate.jpamodelgen.version>5.6.1.Final</hibernate.jpamodelgen.version>
     <spotless.version>2.21.0</spotless.version>
