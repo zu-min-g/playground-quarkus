@@ -244,7 +244,7 @@
         <plugins>
           <plugin>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>3.4.0</version>
+            <version>3.4.1</version>
             <configuration>
               <locale>ja_JP</locale>
             </configuration>
