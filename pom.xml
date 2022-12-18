@@ -229,12 +229,20 @@
           <groupId>com.github.spotbugs</groupId>
           <artifactId>spotbugs-maven-plugin</artifactId>
           <version>4.7.3.0</version>
+          <configuration>
+            <excludeFilterFile>app/spotbugs/spotbugs-exclude.xml</excludeFilterFile>
+          </configuration>
           <dependencies>
             <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
             <dependency>
               <groupId>com.github.spotbugs</groupId>
               <artifactId>spotbugs</artifactId>
               <version>4.7.3</version>
+            </dependency>
+            <dependency>
+              <groupId>com.zu_min.playground.quarkus</groupId>
+              <artifactId>build-configs</artifactId>
+              <version>${project.version}</version>
             </dependency>
           </dependencies>
           <executions>
