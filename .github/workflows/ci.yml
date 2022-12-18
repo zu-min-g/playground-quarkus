@@ -30,7 +30,7 @@ jobs:
         run: mvn install -am -pl build-tools/configs -Pci
       - name: Coding style check
         shell: bash
-        run: mvn spotless:check checkstyle:check -Pci
+        run: mvn spotless:check checkstyle:check spotbugs:check -Pci -pl !coverage
       - name: Install libraries and extensions
         shell: bash
         run: mvn install -DskipTests=true -DskipApps=trues -Pci
