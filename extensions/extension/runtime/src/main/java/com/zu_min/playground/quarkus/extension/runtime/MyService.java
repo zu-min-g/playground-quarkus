@@ -1,6 +1,6 @@
 package com.zu_min.playground.quarkus.extension.runtime;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 /**
  * サンプルサービス。
