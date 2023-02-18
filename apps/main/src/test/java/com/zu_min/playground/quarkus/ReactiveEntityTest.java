@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import io.quarkus.test.TestReactiveTransaction;
 import io.quarkus.test.TestTransaction;
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.junit.vertx.UniAsserter;
+import io.quarkus.test.vertx.UniAsserter;
 
 import com.zu_min.playground.quarkus.extension.runtime.Fruit;
 
