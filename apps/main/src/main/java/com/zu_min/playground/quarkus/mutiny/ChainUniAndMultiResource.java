@@ -4,8 +4,8 @@ import java.util.LongSummaryStatistics;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 import io.smallrye.mutiny.Multi;
 import io.smallrye.mutiny.Uni;
