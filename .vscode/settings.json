@@ -3,7 +3,7 @@
     "java.format.settings.profile": "build-tools\\configs\\src\\main\\resources\\app\\formatter\\formatter.xml",
     "java.completion.importOrder": [
         "java",
-        "javax",
+        "jakarta",
         "io.quarkus",
         "com.zu_min"
     ],
