@@ -1,7 +1,21 @@
 name: CI
 on:
   pull_request:
-    types: [opened, synchronize, reopened, closed]
+    branches:
+      - "master"
+    paths-ignore:
+      - ".editorconfig"
+      - ".gitattributes"
+      - ".gitignore"
+      - ".dockerignore"
+      - "*.config"
+      - "*.md"
+      - ".github/*.yml"
+      - "middleware/**"
+      - ".vscode/**"
+  push:
+    branches:
+      - "master"
     paths-ignore:
       - ".editorconfig"
       - ".gitattributes"
