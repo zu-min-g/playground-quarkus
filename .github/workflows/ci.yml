@@ -30,7 +30,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     name: CI
-    if: github.event.pull_request.merged == true || github.event.action != 'closed'
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
