@@ -31,9 +31,49 @@
             ],
         },
         {
+            "label": "start main test",
+            "type": "shell",
+            "command": "mvn clean compile quarkus:test -pl apps/main -Ddebug=5006",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom",
+                    "pattern": {
+                        "regexp": "$^"
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "$^",
+                        "endsPattern": "^.*Listening for transport dt_socket at address.*$"
+                    },
+                }
+            ],
+        },
+        {
             "label": "start classic",
             "type": "shell",
             "command": "mvn clean compile quarkus:dev -pl apps/classic -Ddebug=5007",
+            "group": "build",
+            "isBackground": true,
+            "problemMatcher": [
+                {
+                    "owner": "custom",
+                    "pattern": {
+                        "regexp": "$^"
+                    },
+                    "background": {
+                        "activeOnStart": true,
+                        "beginsPattern": "$^",
+                        "endsPattern": "^.*Listening for transport dt_socket at address.*$"
+                    },
+                }
+            ],
+        },
+        {
+            "label": "start classic test",
+            "type": "shell",
+            "command": "mvn clean compile quarkus:test -pl apps/classic -Ddebug=5007",
             "group": "build",
             "isBackground": true,
             "problemMatcher": [
