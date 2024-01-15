@@ -30,7 +30,7 @@
     <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
     <hibernate.jpamodelgen.version>5.6.15.Final</hibernate.jpamodelgen.version>
     <spotless.version>2.41.1</spotless.version>
-    <jacoco.plugin.version>0.8.8</jacoco.plugin.version>
+    <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
