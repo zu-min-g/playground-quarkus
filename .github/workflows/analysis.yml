@@ -37,6 +37,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           mvn -B verify \
+            -Pcoverage \
+            jacoco:report-aggregate \
             org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=zu-min-g_playground-quarkus_AY2RKIrZJv1wBrRQWP1D \
-            jacoco:report-aggregate -Pcoverage
+            -Dsonar.projectKey=zu-min-g_playground-quarkus_AY2RKIrZJv1wBrRQWP1D
