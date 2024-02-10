@@ -12,7 +12,6 @@
   <name>Coverage</name>
   <properties>
     <maven.install.skip>true</maven.install.skip>
-    <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
   <dependencies>
     <dependency>
